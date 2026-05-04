@@ -1,17 +1,94 @@
 ---
-
+import "../styles/global.css";
+import { Font } from "astro:assets";
+import { ArrowRight } from "@lucide/astro";
+import { ArrowLeft } from "@lucide/astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+    <Font cssVariable="--font-clash-display" />
+  </head>
+  <body>
+    <script>
+      import gsap from "gsap";
+
+      gsap.to("#arrow-left", { x: 5, yoyo: true, repeat: -1 });
+      gsap.to("#arrow-right", { x: -5, yoyo: true, repeat: -1 });
+
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+      document.querySelectorAll(".hero-text").forEach((el, i) => {
+        const original = el.textContent.trim();
+
+        gsap.to(
+          {},
+          {
+            duration: 1.2,
+            delay: i * 0.08,
+            ease: "power1.inOut",
+            onUpdate: function () {
+              const progress = this.progress(); // 0 to 1
+              if (progress < 0.85) {
+                el.textContent =
+                  chars[Math.floor(Math.random() * chars.length)];
+              } else {
+                el.textContent = original;
+              }
+            },
+          },
+        );
+      });
+    </script>
+    <style>
+      #athlete {
+        font-family: var(--font-clash-display);
+        font-weight: 700;
+        font-size: xx-large;
+        color: #fff;
+      }
+      #artist {
+        font-family: var(--font-clash-display);
+        font-weight: 700;
+        font-size: xx-large;
+        color: #fff;
+      }
+      .portfolio-text {
+        font-family: var(--font-clash-display);
+        font-weight: 500;
+        font-size: large;
+      }
+    </style>
+    <button class="arrow" id="arrow-left">
+      <ArrowLeft color="#fff" />
+    </button>
+    <div id="hero-box">
+      <div id="artist">
+        <p class="hero-text">A</p>
+        <p class="hero-text">R</p>
+        <p class="hero-text">T</p>
+        <p class="hero-text">I</p>
+        <p class="hero-text">S</p>
+        <p class="hero-text">T</p>
+      </div>
+      <div id="athlete">
+        <p class="hero-text">T</p>
+        <p class="hero-text">H</p>
+        <p class="hero-text">L</p>
+        <p class="hero-text">E</p>
+        <p class="hero-text">T</p>
+        <p class="hero-text">E</p>
+      </div>
+      <p class="portfolio-text">portfolio by sri</p>
+    </div>
+    <a class="arrow" id="arrow-right" href="/projects">
+      <ArrowRight color="#fff" />
+    </a>
+  </body>
 </html>

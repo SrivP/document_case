@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Clash Display";
+  src: url(".../assets/fonts/ClashDisplay-Variable.woff2")
+    format("truetype-variations");
+  font-weight: 200 700;
+}
+
+html {
+  height: 100%;
+}
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+#hero-box {
+  display: grid;
+  grid-template: repeat(5, 1fr) / repeat(7, 1fr);
+  width: 500px;
+  height: 500px;
+}
+
+.arrow {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: black;
+}
+
+#artist {
+  grid-column: 1 / 7;
+  grid-row: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#athlete {
+  grid-column: 1;
+  grid-row: 2 / 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-text {
+  margin: 0;
+  font-size: 50px;
+}
+
+.portfolio-text {
+  writing-mode: vertical-lr;
+  color: white;
+  grid-row: 1 / 5;
+  grid-column: 7;
+  align-self: end;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+#project-carousel {
+  display: flex;
+  background-color: white;
+  height: 90%;
+  width: 200%;
+}

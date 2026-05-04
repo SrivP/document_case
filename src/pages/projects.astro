@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+const posts = await getCollection("projects");
+console.log("posts:", posts); // check your terminal console.log("count:", posts.length);
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div id="project-carousel">
+      {
+        posts.map((post: any) => (
+          <li>
+            <a href={`/projects/${post.id.replace(/\.mdx?$/, "")}/`}>
+              {post.data.heroImage && (
+                <Image
+                  width={720}
+                  height={360}
+                  src={post.data.heroImage}
+                  alt=""
+                />
+              )}
+              <h4 class="title">{post.data.title}</h4>
+              <p class="date" />
+            </a>
+          </li>
+        ))
+      }
+    </div>
+  </body>
+</html>

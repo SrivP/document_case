@@ -1,0 +1,119 @@
+---
+export interface Props {
+  version?: string;
+  status?: string;
+  color?: string; // any CSS color (hex, rgb, hsl)
+}
+
+const {
+  version = "v1.0.0",
+  status = "All systems normal",
+  color = "#22c55e", // default green
+} = Astro.props;
+
+// Create a slightly transparent version of the color for glow
+const glowColor = `${color}99`; // adds alpha
+---
+
+<div class="status-wrapper" style={`--color: ${color}; --glow: ${glowColor};`}>
+  <div class="glow"></div>
+  <div class="badge"></div>
+
+  <div class="tooltip">
+    <p><strong>Version:</strong> {version}</p>
+    <p>{status}</p>
+  </div>
+</div>
+
+<style>
+  .status-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* Glow layer */
+  .glow {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background: radial-gradient(circle, var(--glow), transparent 70%);
+    filter: blur(14px);
+    opacity: 0.7;
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+    animation: pulse 2.5s infinite ease-in-out;
+  }
+
+  /* Dot */
+  .badge {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    background: var(--color);
+    border-radius: 999px;
+    box-shadow: 0 0 10px var(--color);
+    transition: transform 0.2s ease;
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: absolute;
+    bottom: 160%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(10px);
+    color: #d1d5db;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(10, 10, 10, 0.75);
+  }
+
+  /* Hover interactions */
+  .status-wrapper:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+
+  .status-wrapper:hover .glow {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  .status-wrapper:hover .badge {
+    transform: translateY(-1px);
+  }
+
+  /* Subtle breathing glow */
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+</style>

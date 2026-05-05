@@ -20,7 +20,6 @@ const { title, image, slug } = Astro.props;
     padding: 1.5rem;
     box-sizing: border-box;
     cursor: pointer;
-    overflow: hidden;
     text-decoration: none;
   }
   .image-layer {
@@ -48,11 +47,15 @@ const { title, image, slug } = Astro.props;
     font-weight: 600;
   }
 </style>
-
 <script>
   import gsap from "gsap";
-  document.addEventListener("astro:page-load", () => {
+
+  function initStrips() {
     document.querySelectorAll(".strip").forEach((strip) => {
+      // ✅ prevent duplicate binding
+      if (strip.dataset.bound) return;
+      strip.dataset.bound = "true";
+
       const imageLayer = strip.querySelector(".image-layer");
       const title = strip.querySelector(".strip-title");
 
@@ -71,43 +74,15 @@ const { title, image, slug } = Astro.props;
       strip.addEventListener("mouseleave", () => {
         gsap.killTweensOf([imageLayer, title]);
         gsap.to(imageLayer, { y: "0%", duration: 0.5, ease: "power2.inOut" });
-        gsap.to(title, { opacity: 0, y: 20, duration: 0.3, ease: "power2.in" });
+        gsap.to(title, {
+          opacity: 0,
+          y: 20,
+          duration: 0.3,
+          ease: "power2.in",
+        });
       });
     });
-  });
-  document.querySelectorAll(".strip").forEach((strip) => {
-    const imageLayer = strip.querySelector(".image-layer");
-    const title = strip.querySelector(".strip-title");
+  }
 
-    strip.addEventListener("mouseenter", () => {
-      gsap.killTweensOf([imageLayer, title]);
-      gsap.to(imageLayer, {
-        y: "-15%",
-        duration: 0.6,
-        ease: "power2.out",
-      });
-      gsap.to(title, {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        delay: 0.2,
-        ease: "power2.out",
-      });
-    });
-
-    strip.addEventListener("mouseleave", () => {
-      gsap.killTweensOf([imageLayer, title]);
-      gsap.to(imageLayer, {
-        y: "0%",
-        duration: 0.5,
-        ease: "power2.inOut",
-      });
-      gsap.to(title, {
-        opacity: 0,
-        y: 20,
-        duration: 0.3,
-        ease: "power2.in",
-      });
-    });
-  });
+  document.addEventListener("astro:page-load", initStrips);
 </script>

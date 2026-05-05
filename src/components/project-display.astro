@@ -10,8 +10,8 @@ const { title, image, slug } = Astro.props;
 
 <style>
   .strip {
-    width: 20vw;
-    min-width: 20vw;
+    width: 19vw;
+    min-width: 19vw;
     flex-shrink: 0;
     position: relative;
     height: 100%;
@@ -22,37 +22,42 @@ const { title, image, slug } = Astro.props;
     cursor: pointer;
     text-decoration: none;
   }
+
   .image-layer {
     position: absolute;
     inset: 0;
     background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
+
+    /* default muted look */
+    filter: grayscale(80%) brightness(0.9);
   }
+
   .overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   }
+
   .strip-title {
     position: relative;
     color: white;
     margin: 0;
-    font-size: 1.2rem;
-    z-index: 1;
-    opacity: 0;
-    transform: translateY(20px);
     font-size: xx-large;
     font-family: var(--font-clash-display);
     font-weight: 600;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(20px);
   }
 </style>
+
 <script>
   import gsap from "gsap";
 
   function initStrips() {
     document.querySelectorAll(".strip").forEach((strip) => {
-      // ✅ prevent duplicate binding
       if (strip.dataset.bound) return;
       strip.dataset.bound = "true";
 
@@ -61,7 +66,21 @@ const { title, image, slug } = Astro.props;
 
       strip.addEventListener("mouseenter", () => {
         gsap.killTweensOf([imageLayer, title]);
-        gsap.to(imageLayer, { y: "-15%", duration: 0.6, ease: "power2.out" });
+
+        // image slide (unchanged timing)
+        gsap.to(imageLayer, {
+          y: "-10%",
+          duration: 0.8,
+          ease: "circ.out",
+        });
+
+        // FAST color fade in
+        gsap.to(imageLayer, {
+          filter: "grayscale(0%) brightness(1)",
+          duration: 0.15,
+          ease: "circ.out",
+        });
+
         gsap.to(title, {
           opacity: 1,
           y: 0,
@@ -73,7 +92,21 @@ const { title, image, slug } = Astro.props;
 
       strip.addEventListener("mouseleave", () => {
         gsap.killTweensOf([imageLayer, title]);
-        gsap.to(imageLayer, { y: "0%", duration: 0.5, ease: "power2.inOut" });
+
+        // image slide back (unchanged timing)
+        gsap.to(imageLayer, {
+          y: "0%",
+          duration: 0.5,
+          ease: "power2.inOut",
+        });
+
+        // FAST color fade out
+        gsap.to(imageLayer, {
+          filter: "grayscale(80%) brightness(0.9)",
+          duration: 0.15,
+          ease: "power2.in",
+        });
+
         gsap.to(title, {
           opacity: 0,
           y: 20,

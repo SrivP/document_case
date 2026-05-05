@@ -9,6 +9,7 @@ const projects = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     heroImage: z.string().optional(),
+    bannerImage: z.string().optional(),
     role: z.string().optional(),
     duration: z.string().optional(),
     tools: z.array(z.string()).optional(),

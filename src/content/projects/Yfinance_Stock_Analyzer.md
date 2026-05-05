@@ -1,11 +1,12 @@
 ---
-title: "Yfinance Stock Analyzer"
+title: "Stock Analyzer"
 category: "Personal Development"
 role: "Developer"
 duration: "Jan 2023 - Mar 2023"
 tools: ["React", "yfinance", "Python", "Flask", "Chart.js"]
-github: "https://github.com/yourname/repo"
-heroImage: "https://picsum.photos/1920/1080"
+github: "https://github.com/SrivP/stock_sentiment_analysis"
+heroImage: "/project-photos/yfinance_project/hero.png"
+bannerImage: "/project-photos/yfinance_project/banner.png"
 pubDate: 2023-03-01
 description: "A web application that allows users to analyze stock data."
 ---

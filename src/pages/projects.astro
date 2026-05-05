@@ -43,7 +43,7 @@ import { ClientRouter } from "astro:transitions";
   </head>
   <body>
     <NavBar />
-    <div id="project-carousel">
+    <div id="project-carousel" >
       {
           posts.map((post: any) => (
             <ProjectDisplay title=`${post.data.title}` image=`${post.data.heroImage}` slug={post.id.replace(/\.mdx?$/, "")}/>

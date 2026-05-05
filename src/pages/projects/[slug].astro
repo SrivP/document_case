@@ -17,7 +17,7 @@ const { Content } = await render(project);
 const {
   title,
   description,
-  heroImage,
+  bannerImage,
   role,
   duration,
   tools,
@@ -47,9 +47,9 @@ import "../../styles/global.css";
       </div>
 
       {
-        heroImage && (
+        bannerImage && (
           <div class="hero-image-wrapper">
-            <img src={heroImage} alt={title} class="hero-image" />
+            <img src={bannerImage} alt={title} class="hero-image" />
           </div>
         )
       }

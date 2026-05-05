@@ -1,0 +1,88 @@
+---
+const { title, image, slug } = Astro.props;
+---
+
+<a class="strip" style={`--bg-image: url(${image})`} href={`/projects/${slug}`}>
+  <div class="image-layer"></div>
+  <div class="overlay"></div>
+  <h2 class="strip-title">{title}</h2>
+</a>
+
+<style>
+  .strip {
+    width: 20vw;
+    min-width: 20vw;
+    flex-shrink: 0;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .image-layer {
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  }
+  .strip-title {
+    position: relative;
+    color: white;
+    margin: 0;
+    font-size: 1.2rem;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(20px);
+    font-size: xx-large;
+    font-family: var(--font-clash-display);
+    font-weight: 600;
+  }
+</style>
+<script>
+  import gsap from "gsap";
+
+  function initStrips() {
+    document.querySelectorAll(".strip").forEach((strip) => {
+      // ✅ prevent duplicate binding
+      if (strip.dataset.bound) return;
+      strip.dataset.bound = "true";
+
+      const imageLayer = strip.querySelector(".image-layer");
+      const title = strip.querySelector(".strip-title");
+
+      strip.addEventListener("mouseenter", () => {
+        gsap.killTweensOf([imageLayer, title]);
+        gsap.to(imageLayer, { y: "-15%", duration: 0.6, ease: "power2.out" });
+        gsap.to(title, {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          delay: 0.2,
+          ease: "power2.out",
+        });
+      });
+
+      strip.addEventListener("mouseleave", () => {
+        gsap.killTweensOf([imageLayer, title]);
+        gsap.to(imageLayer, { y: "0%", duration: 0.5, ease: "power2.inOut" });
+        gsap.to(title, {
+          opacity: 0,
+          y: 20,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initStrips);
+</script>

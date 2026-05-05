@@ -1,0 +1,321 @@
+---
+import NavBar from "../layouts/NavBar.astro";
+import "../styles/global.css";
+import { Font } from "astro:assets";
+import { ClientRouter } from "astro:transitions";
+---
+
+<!-- the grid layout was ai generated because I got a bit lazy 😭 -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Contact</title>
+    <Font cssVariable="--font-clash-display" />
+    <ClientRouter />
+  </head>
+  <body>
+    <NavBar />
+
+    <div id="contact-grid">
+      <!-- EMAIL — full width top -->
+      <a class="card" id="card-email" href="mailto:srivprasanna@gmail.com">
+        <div class="card-inner">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.891.827-1.636 1.636-1.636h.127L12 10.09l10.237-6.27h.127A1.636 1.636 0 0124 5.457z"
+            ></path>
+          </svg>
+          <div class="card-label">
+            <span class="card-tag">SHOOT ME AN EMAIL 🛩️</span>
+            <span class="card-title">srivprasanna@gmail.com</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- MAP — large card left -->
+      <a
+        class="card"
+        id="card-map"
+        href="https://maps.app.goo.gl/MBHzwPFWsGbjNkb4A"
+        target="_blank"
+      >
+        <div class="card-inner">
+          <div class="map-placeholder">
+            <svg
+              viewBox="0 0 100 100"
+              xmlns="http://www.w3.org/2000/svg"
+              class="map-icon"
+            >
+              <circle
+                cx="50"
+                cy="42"
+                r="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="4"></circle>
+              <circle cx="50" cy="42" r="6" fill="currentColor"></circle>
+              <path
+                d="M50 60 Q35 75 30 85 Q50 78 70 85 Q65 75 50 60Z"
+                fill="currentColor"
+                opacity="0.4"></path>
+            </svg>
+            <div class="map-grid">
+              {Array.from({ length: 64 }).map(() => <div class="map-cell" />)}
+            </div>
+          </div>
+          <div class="card-label">
+            <span class="card-tag">FIND ME</span>
+            <span class="card-title">Oakville, ON 🍁</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- LINKEDIN -->
+      <a
+        class="card collapse-card"
+        id="card-linkedin"
+        href="https://www.linkedin.com/in/srivathsanprasanna/"
+        target="_blank"
+      >
+        <div class="card-inner">
+          <svg
+            class="brand-icon collapase-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            ></path>
+          </svg>
+          <div class="card-label collpase-label">
+            <span class="card-tag collpase-tag">CONNECT</span>
+            <span class="card-title collpase-title">LinkedIn</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- INSTAGRAM -->
+      <a
+        class="card collapse-card"
+        id="card-instagram"
+        href="https://www.instagram.com/treewhacksun/"
+        target="_blank"
+      >
+        <div class="card-inner">
+          <svg
+            class="brand-icon collapase-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+            ></path>
+          </svg>
+          <div class="card-label collpase-label">
+            <span class="card-tag collpase-tag">FOLLOW</span>
+            <span class="card-title collpase-title">Instagram</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- GITHUB -->
+      <a
+        class="card"
+        id="card-github"
+        href="https://github.com/SrivP"
+        target="_blank"
+      >
+        <div class="card-inner">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            ></path>
+          </svg>
+          <div class="card-label">
+            <span class="card-tag">CODE</span>
+            <span class="card-title">GitHub</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <style>
+      #contact-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: auto 1fr 1fr;
+        gap: 12px;
+        width: 80vw;
+        height: 70vh;
+        margin-top: 60px;
+      }
+
+      #card-email {
+        grid-column: 1 / 4;
+        grid-row: 1;
+      }
+
+      #card-map {
+        grid-column: 1;
+        grid-row: 2 / 4;
+      }
+
+      #card-linkedin {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      #card-instagram {
+        grid-column: 3;
+        grid-row: 2;
+      }
+      #card-github {
+        grid-column: 2 / 4;
+        grid-row: 3;
+      }
+
+      .card {
+        background-color: #111;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 24px;
+        text-decoration: none;
+        display: block;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 0 0px transparent;
+        transition: border-color 0.1s;
+      }
+
+      .card-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+        box-sizing: border-box;
+      }
+
+      .brand-icon {
+        width: 48px;
+        height: 48px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.3s ease;
+      }
+
+      .card:hover .brand-icon {
+        color: white;
+      }
+
+      .card-label {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .card-tag {
+        font-family: var(--font-clash-display);
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.3);
+        text-transform: uppercase;
+      }
+
+      .card-title {
+        font-family: var(--font-clash-display);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      .map-placeholder {
+        position: relative;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .map-grid {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        gap: 2px;
+        opacity: 0.15;
+      }
+
+      .map-cell {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+      }
+
+      .map-icon {
+        width: 64px;
+        height: 64px;
+        color: rgba(255, 255, 255, 0.7);
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+
+    <script>
+      import gsap from "gsap";
+
+      const glowColors = {
+        "card-email": {
+          border: "#EA4335",
+          shadow: "0 0 20px #EA4335, 0 0 40px #EA433544",
+        },
+        "card-linkedin": {
+          border: "#0A66C2",
+          shadow: "0 0 20px #0A66C2, 0 0 40px #0A66C244",
+        },
+        "card-instagram": {
+          border: "#E1306C",
+          shadow: "0 0 20px #E1306C, 0 0 40px #E1306C44",
+        },
+        "card-github": {
+          border: "#f0f6fc",
+          shadow: "0 0 20px #ffffff99, 0 0 40px #ffffff22",
+        },
+        "card-map": {
+          border: "#34A853",
+          shadow: "0 0 20px #34A853, 0 0 40px #34A85344",
+        },
+      };
+
+      document.addEventListener("astro:page-load", () => {
+        Object.entries(glowColors).forEach(([id, colors]) => {
+          const card = document.getElementById(id);
+          if (!card) return;
+
+          card.addEventListener("mouseenter", () => {
+            gsap.to(card, {
+              boxShadow: colors.shadow,
+              borderColor: colors.border,
+              duration: 0.4,
+              ease: "power2.out",
+            });
+          });
+
+          card.addEventListener("mouseleave", () => {
+            gsap.to(card, {
+              boxShadow: "0 0 0px transparent",
+              borderColor: "rgba(255,255,255,0.15)",
+              duration: 0.4,
+              ease: "power2.inOut",
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

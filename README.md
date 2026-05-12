@@ -1,43 +1,50 @@
-# Astro Starter Kit: Minimal
+<img width="887" height="640" alt="image" src="https://github.com/user-attachments/assets/f0bef276-11d1-436f-ac28-d387718eca46" /># Project Overview
+Hey!, sri here. This is my personal portfolio, the thing I've spent time working on instead of real projects lol. I've built this with Astro.js for the frontend, alongside GSAP for animations and CSS (no tailwind css in the big 26'). I mostly tried to flex more of my front-end design skills, while trying to maintian a minimal aesthetic, since I didn't want to spend too much time on it. Hopefully you like it!
 
-```sh
-npm create astro@latest -- --template minimal
-```
+# Live Demo + Screenshot
+https://sriv.me
+<img width="1883" height="1047" alt="image" src="https://github.com/user-attachments/assets/c0cb1973-ac06-4172-a3e5-c356874c14a2" />
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
+# Folder Structure
+portfolio/
+├── astro.config.mjs
+├── package.json
+├── tsconfig.json
+├── README.md
+├── .gitignore
 ├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+│   ├── favicon.ico
+│   ├── *.svg
+│   └── project-photos/
+│       └── yfinance_project/
+│           ├── banner.png
+│           └── hero.png
+└── src/
+    ├── content.config.ts
+    ├── assets/
+    │   ├── fonts/
+    │   ├── arrow.svg
+    │   ├── nlinkedin.svg
+    │   └── wave.gif
+    ├── components/
+    │   ├── project-display.astro
+    │   └── status-badge.astro
+    ├── content/
+    │   └── projects/
+    │       └── Yfinance_Stock_Analyzer.md
+    ├── layouts/
+    │   └── NavBar.astro
+    ├── pages/
+    │   ├── index.astro
+    │   ├── contact.astro
+    │   ├── projects.astro
+    │   └── projects/
+    │       └── [slug].astro
+    └── styles/
+        └── global.css
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+# Roadmap
+In terms of furthur improvement, I'd work on the responsiveness of this design. This is because although I've added media breakpoints to it, as the projects page gets more populated this design setups is more likely to break. In addition there are still a few minor bugs (the text doesn't render consistently on slide up animation in the project page) that need fixing. I'll most likely return to revamp this site (and hopefully not go down another perfection infested doom scroll rabbit hole).
 
-Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

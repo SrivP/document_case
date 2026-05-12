@@ -7,7 +7,6 @@ https://sriv.me
 
 # Folder Structure
 <pre>
-<details>
 portfolio/
 ├── astro.config.mjs
 ├── package.json
@@ -44,8 +43,6 @@ portfolio/
     │       └── [slug].astro
     └── styles/
         └── global.css
-
-</details>
 </pre>
 # Roadmap
 In terms of furthur improvement, I'd work on the responsiveness of this design. This is because although I've added media breakpoints to it, as the projects page gets more populated this design setups is more likely to break. In addition there are still a few minor bugs (the text doesn't render consistently on slide up animation in the project page) that need fixing. I'll most likely return to revamp this site (and hopefully not go down another perfection infested doom scroll rabbit hole).

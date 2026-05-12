@@ -1,4 +1,4 @@
-<img width="887" height="640" alt="image" src="https://github.com/user-attachments/assets/f0bef276-11d1-436f-ac28-d387718eca46" /># Project Overview
+# Project Overview
 Hey!, sri here. This is my personal portfolio, the thing I've spent time working on instead of real projects lol. I've built this with Astro.js for the frontend, alongside GSAP for animations and CSS (no tailwind css in the big 26'). I mostly tried to flex more of my front-end design skills, while trying to maintian a minimal aesthetic, since I didn't want to spend too much time on it. Hopefully you like it!
 
 # Live Demo + Screenshot

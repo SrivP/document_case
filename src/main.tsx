@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App.tsx";
 import About from "./components/About.tsx";
 import Projects from "./components/Projects.tsx";
-import Nav from "./components/Nav.tsx";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 // Supports weights 400-700
@@ -52,7 +51,7 @@ createRoot(document.getElementById("root")!).render(
         cPolarAngle={120}
         cameraZoom={1}
         color1="#FFF5EB"
-        color2="#FCD1A6"
+        color2="#F0ECE5"
         color3="#F1F1F1"
         destination="onCanvas"
         embedMode="off"

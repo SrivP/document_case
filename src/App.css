@@ -92,7 +92,148 @@
 .projects-content {
   width: 100%;
   min-height: 100vh;
-  background: #ffffff;
+  background: #f0ece5;
   position: relative;
   z-index: 2;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 80px 64px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1400px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 64px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-overlay {
+  --thickness: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  background: hsl(0deg 0% 10% / 0.5);
+  border-radius: 24px;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 200px;
+  overflow: hidden; /* clips the backdrop pseudo elements */
+  border-radius: 64px;
+}
+
+@supports (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px)) {
+  .card-overlay {
+    background: hsl(0deg 0% 10% / 0.3);
+  }
+
+  .card-backdrop {
+    position: absolute;
+    inset: 0;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background: linear-gradient(
+      to bottom,
+      hsl(0deg 0% 5% / 0.6),
+      hsl(0deg 0% 5% / 0.2) 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .card-backdrop-edge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--thickness);
+    background: hsl(0deg 0% 100% / 0.08);
+    -webkit-backdrop-filter: blur(12px) brightness(0.96);
+    backdrop-filter: blur(12px) brightness(0.96);
+    transform: translateY(100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+@supports (mask-image: none) or (-webkit-mask-image: none) {
+  .card-backdrop {
+    height: 200%;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0% 50%,
+      transparent 50% 100%
+    );
+    mask-image: linear-gradient(to bottom, black 0% 50%, transparent 50% 100%);
+  }
+
+  .card-backdrop-edge {
+    height: 100%;
+    inset: 0;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0,
+      black var(--thickness),
+      transparent var(--thickness)
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      black 0,
+      black var(--thickness),
+      transparent var(--thickness)
+    );
+  }
+}
+
+/* Push text above the backdrop layers */
+.card-category,
+.card-title {
+  position: relative;
+  z-index: 1;
+}
+
+.card-category {
+  font-family: "Inter Variable", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+
+.card-title {
+  font-family: "Inter Variable", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
 }

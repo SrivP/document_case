@@ -1,6 +1,7 @@
 import Nav from "./Nav";
 import "../App.css";
 import { MoveDown } from "lucide-react";
+import Card from "./Card";
 
 export default function Projects() {
   return (
@@ -13,7 +14,14 @@ export default function Projects() {
           <MoveDown />
         </section>
 
-        <section className="projects-content">{/* content here */}</section>
+        <section className="projects-content">
+          <div className="projects-grid">
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+          </div>
+        </section>
       </div>
       <Nav />
     </>
